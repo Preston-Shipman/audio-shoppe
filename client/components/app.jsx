@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header';
 import ProductListItem from './product-list-item';
+import ProductList from './product-list';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +27,7 @@ export default class App extends React.Component {
         </div>,
         <div className="row d-flex justify-content-between">
           <ProductListItem />
+          <ProductList />
         </div>
       </div>
     );

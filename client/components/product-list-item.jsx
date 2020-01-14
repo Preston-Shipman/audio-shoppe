@@ -1,24 +1,22 @@
 import React from 'react';
-
+// import ProductList from './product-list';
 function ProductListItem(props) {
+  const products = props.products;
+  // eslint-disable-next-line no-console
+  console.log(products);
   return (
-    // <div className="container">
-    //   <div className="row">
     <div className="card">
-      {/* <img
-        className="card-img-top"
-        src=".../100px180/?text=Image cap"
-        alt="Card image cap"
-      /> */}
+      <img
+        // className="card-img-top img-fluid"
+        src="products.image"
+        // alt="Card image cap"
+      />
       <div className="card-body">
-        <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card content.
-        </p>
+        <h5>{props.name}</h5>
+        <h3>{props.price}</h3>
+        <p className="card-text">{props.shortDescription}</p>
       </div>
     </div>
-    //   </div>
-    // </div>
   );
 }
 
