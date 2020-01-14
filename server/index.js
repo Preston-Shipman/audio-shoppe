@@ -18,9 +18,6 @@ app.get('/api/health-check', (req, res, next) => {
     .then(result => res.json(result.rows[0]))
     .catch(err => next(err));
 });
-app.use('/api', (req, res, next) => {
-  next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
-});
 
 app.get('/api/products', (req, res, next) => {
   const sql = `
@@ -37,6 +34,10 @@ app.get('/api/products', (req, res, next) => {
       res.json(product);
     })
     .catch(err => next(err));
+});
+
+app.use('/api', (req, res, next) => {
+  next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
 
 app.use((err, req, res, next) => {
