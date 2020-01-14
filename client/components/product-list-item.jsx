@@ -1,9 +1,7 @@
 import React from 'react';
-// import ProductList from './product-list';
+
 function ProductListItem(props) {
   const product = props.product;
-  // eslint-disable-next-line no-console
-  // console.log(props.products);
   const priceInt = '$' + parseInt(product.price / 100).toFixed(2);
   return (
     <div className="col-6 col-md-4 mt-4">
