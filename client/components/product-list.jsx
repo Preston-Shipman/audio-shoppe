@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductListItem from './product-list-item';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -33,10 +34,10 @@ class ProductList extends React.Component {
 
   render() {
     const productState = this.state.products;
-    const productMap = productState.map(products => (
-      <ProductList
-        key={products.productId}
-        products={products}
+    const productMap = productState.map(product => (
+      <ProductListItem
+        key={product.productId}
+        product={product}
       />
     ));
     return (
