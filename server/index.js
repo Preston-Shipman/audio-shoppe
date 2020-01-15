@@ -33,6 +33,35 @@ app.get('/api/products', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/products/:productId', (req, res, next) => {
+  const parse = parseInt(req.params.productId);
+  const text = `select * from "products"
+                where "productId" = $1`;
+  const values = [parse];
+  if (
+    isNaN(req.params.productId) ||
+    parse < 0
+  ) {
+    next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 400));
+  } else {
+    db.query(text, values)
+      .then(response => {
+        const products = response.rows[0];
+        if (!products) {
+          next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
+        } else {
+          res.json(products);
+          // eslint-disable-next-line no-useless-return
+          return;
+        }
+      })
+      .catch(err => {
+        // eslint-disable-next-line no-console
+        console.log('Error', err);
+      });
+  }
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
