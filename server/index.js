@@ -42,22 +42,19 @@ app.get('/api/products/:productId', (req, res, next) => {
     isNaN(req.params.productId) ||
     parse < 0
   ) {
-    next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 400));
+    next(new ClientError(`The requested productID was not a number ${req.method} ${req.originalUrl}`, 400));
   } else {
     db.query(text, values)
       .then(response => {
         const products = response.rows[0];
         if (!products) {
-          next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
+          next(new ClientError(`No products found.${req.method} ${req.originalUrl}`, 404));
         } else {
           res.json(products);
-          // eslint-disable-next-line no-useless-return
-          return;
         }
       })
       .catch(err => {
-        // eslint-disable-next-line no-console
-        console.log('Error', err);
+        next(err);
       });
   }
 });
