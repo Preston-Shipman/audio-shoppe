@@ -18,7 +18,7 @@ class ProductList extends React.Component {
         return response.json();
       })
       .then(products => {
-        this.setState({ products: products }
+        this.setState({ products }
         );
       })
       .catch(err => {
@@ -36,6 +36,7 @@ class ProductList extends React.Component {
       <ProductListItem
         key={product.productId}
         product={product}
+        setView={this.props.setView}
       />
     ));
     return (
