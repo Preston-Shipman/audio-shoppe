@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 require('dotenv/config');
 const express = require('express');
 const db = require('./database');
@@ -55,6 +56,105 @@ app.get('/api/products/:productId', (req, res, next) => {
       })
       .catch(err => {
         next(err);
+      });
+  }
+});
+
+app.get('/api/cart/', (req, res, next) => {
+  if (!req.session.cartId) {
+    res.json([]);
+  } else {
+    const cartSQL = `select "c"."cartItemId",
+                      "c"."price",
+                      "p"."productId",
+                      "p"."image",
+                      "p"."name",
+                      "p"."shortDescription"
+                      from "cartItems" as "c"
+                      join "products" as "p" using ("productId")
+                      where "c"."cartId" = $1`;
+    const params = [req.session.cartId];
+    return db.query(cartSQL, params)
+      .then(result => {
+        res.status(200).json(result.rows);
+        // console.log(result);
+      });
+  }
+});
+
+app.post('/api/cart', (req, res, next) => {
+  const productId = [req.body.productId];
+  if (!req.body.productId || isNaN(req.body.productId)) {
+    res.status(400).json({
+      error: 'Invalid or no input.'
+    });
+  } else {
+    const priceSQL = `select "price" from "products"
+                    where "productId"=$1`;
+    const params = productId;
+    db.query(priceSQL, params)
+      .then(result => {
+        if (result.rows.length === 0) {
+          next(new ClientError('No rows!', 400));
+        }
+        const price = result.rows[0].price;
+        const cartId = req.session.cartId;
+        if (!cartId) {
+          const insertSQL = `insert into "carts" ("cartId", "createdAt")
+                            values (default, default)
+                              returning "cartId"`;
+          return db.query(insertSQL)
+            .then(response => {
+              const cart = {};
+              const cartId = response.rows[0].cartId;
+              cart.cartId = cartId;
+              cart.price = price;
+              return cart;
+            });
+        } else {
+          return { cartId, price };
+        }
+      })
+      .then(cartAndPrice => {
+        const productIdValue = productId[0];
+        req.session.cartId = cartAndPrice.cartId;
+        const cartItems = `insert into "cartItems" ("cartId", "productId", "price")
+                            values ($1, $2, $3)
+                              returning "cartItemId"`;
+        const params = [req.session.cartId, productIdValue, cartAndPrice.price];
+        return db.query(cartItems, params)
+          .then(result => {
+            const cartItemId = result.rows[0].cartItemId;
+            return cartItemId;
+          });
+        // Create a shopping cart here and create id
+      })
+      .then(currentCart => {
+        const params = ([currentCart]);
+        console.log(currentCart);
+        const cartItemQuery = `select "c"."cartItemId",
+                                "c"."price",
+                                "p"."productId",
+                                "p"."image",
+                                "p"."name",
+                                "p"."shortDescription"
+                                from "cartItems" as "c"
+                                join "products" as "p" using ("productId")
+                                where "c"."cartItemId" = $1`;
+        return db.query(cartItemQuery, params)
+          .then(result => {
+            res.status(201).json(
+              result.rows[0]
+            );
+          });
+        // save cart item
+        // save with cartId price and productId
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({
+          error: 'An unexpected error occurred.'
+        });
       });
   }
 });
