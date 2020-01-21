@@ -145,10 +145,7 @@ app.post('/api/cart', (req, res, next) => {
         // save cart item
         // save with cartId price and productId
       })
-      .catch(err => {
-        console.error(err);
-        res.status(500).json({ error: next(err) });
-      });
+      .catch(err => next(err));
   }
 });
 
