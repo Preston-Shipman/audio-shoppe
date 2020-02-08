@@ -82,28 +82,23 @@ app.get('/api/cart/', (req, res, next) => {
 });
 
 app.post('/api/cart', (req, res, next) => {
-  console.log(req.body.productId);
   const productId = parseInt(req.body.productId);
   if (!req.body.productId || isNaN(req.body.productId)) {
     res.status(400).json({
       error: 'Invalid or no input.'
     });
   } else {
-    console.log(productId);
     const priceSQL = `select "price" from "products"
                     where "productId"=$1`;
     const params = [productId];
     db.query(priceSQL, params)
       .then(result => {
-        console.log('hello line 96');
         if (result.rows.length === 0) {
-          console.log('hello 100');
           throw new ClientError('No rows!', 400);
         }
         const price = result.rows[0].price;
         const cartId = req.session.cartId;
         if (!cartId) {
-          console.log('hello 106');
           const insertSQL = `insert into "carts" ("cartId", "createdAt")
                             values (default, default)
                               returning "cartId"`;
@@ -119,7 +114,6 @@ app.post('/api/cart', (req, res, next) => {
         }
       })
       .then(cartAndPrice => {
-        console.log('hello 122');
         const productIdValue = productId;
         req.session.cartId = cartAndPrice.cartId;
         const cartItems = `insert into "cartItems" ("cartId", "productId", "price")
@@ -132,9 +126,7 @@ app.post('/api/cart', (req, res, next) => {
         });
       })
       .then(currentCart => {
-        console.log('hello 135');
         const params = [currentCart];
-        console.log(currentCart);
         const cartItemQuery = `select "c"."cartItemId",
                                 "c"."price",
                                 "p"."productId",
