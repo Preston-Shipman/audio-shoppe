@@ -77,13 +77,12 @@ app.get('/api/cart/', (req, res, next) => {
     return db.query(cartSQL, params)
       .then(result => {
         res.status(200).json(result.rows);
-        // console.log(result);
       });
   }
 });
 
 app.post('/api/cart', (req, res, next) => {
-  const productId = [req.body.productId];
+  const productId = parseInt(req.body.productId);
   if (!req.body.productId || isNaN(req.body.productId)) {
     res.status(400).json({
       error: 'Invalid or no input.'
@@ -91,7 +90,7 @@ app.post('/api/cart', (req, res, next) => {
   } else {
     const priceSQL = `select "price" from "products"
                     where "productId"=$1`;
-    const params = productId;
+    const params = [productId];
     db.query(priceSQL, params)
       .then(result => {
         if (result.rows.length === 0) {
@@ -115,7 +114,7 @@ app.post('/api/cart', (req, res, next) => {
         }
       })
       .then(cartAndPrice => {
-        const productIdValue = productId[0];
+        const productIdValue = productId;
         req.session.cartId = cartAndPrice.cartId;
         const cartItems = `insert into "cartItems" ("cartId", "productId", "price")
                             values ($1, $2, $3)
@@ -125,11 +124,9 @@ app.post('/api/cart', (req, res, next) => {
           const cartItemId = result.rows[0].cartItemId;
           return cartItemId;
         });
-        // Create a shopping cart here and create id
       })
       .then(currentCart => {
         const params = [currentCart];
-        console.log(currentCart);
         const cartItemQuery = `select "c"."cartItemId",
                                 "c"."price",
                                 "p"."productId",
@@ -142,8 +139,6 @@ app.post('/api/cart', (req, res, next) => {
         return db.query(cartItemQuery, params).then(result => {
           res.status(201).json(result.rows[0]);
         });
-        // save cart item
-        // save with cartId price and productId
       })
       .catch(err => next(err));
   }

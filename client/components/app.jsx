@@ -8,9 +8,12 @@ export default class App extends React.Component {
     this.state = {
       message: null,
       view: { name: 'catalog', params: {} },
-      isLoading: true
+      isLoading: true,
+      cart: []
     };
     this.setView = this.setView.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +22,7 @@ export default class App extends React.Component {
       .then(data => this.setState({ message: data.message || data.error }))
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
+    this.getCartItems();
   }
 
   setView(name, params) {
@@ -30,11 +34,30 @@ export default class App extends React.Component {
     });
   }
 
+  getCartItems() {
+    fetch('/api/cart')
+      .then(res => res.json());
+  }
+
+  addToCart(product) {
+    console.log(product);
+    const req = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(product)
+    };
+    fetch('api/cart', req)
+      .then(() => this.setState({
+        cart: this.state.cart.concat(product)
+      }))
+      .catch(err => console.error(err));
+  }
+
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Header />,
+          <Header cartItemCount={this.state.cart}/>,
           <ProductList setView={this.setView} />
         </div>
       );
@@ -42,7 +65,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header />,
-          <ProductDetails productId={this.state.view.params.productId} setView={this.setView} />
+          <ProductDetails productId={this.state.view.params.productId} setView={this.setView} addToCart={this.addToCart} />
         </div>
       );
     }
