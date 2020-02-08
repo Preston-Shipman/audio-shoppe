@@ -3,10 +3,11 @@ import React from 'react';
 function header(props) {
   return (
     <nav className="navbar navbar-dark bg-dark">
+      <i className="fas fa-dollar-sign float-left text-white"></i>
       <a className="navbar-brand" href="#">
-        <i className="fas fa-dollar-sign"></i>
-            Wicked Sales
+        Wicked Sales
       </a>
+      <i className="fas fa-shopping-cart float-right text-white"></i>
     </nav>
   );
 }
