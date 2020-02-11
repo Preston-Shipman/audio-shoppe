@@ -145,7 +145,7 @@ app.post('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/orders', (req, res, next) => {
-  if (!req.session.cartId) {
+  if (!req.body.cartId) {
     next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 400));
   } else {
     if (req.body.name && req.body.creditCard && req.body.shippingAddress) {
