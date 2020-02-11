@@ -9,7 +9,8 @@ export default class App extends React.Component {
       message: null,
       view: { name: 'catalog', params: {} },
       isLoading: true,
-      cart: []
+      cart: [],
+      insertCompleted: null
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
@@ -40,7 +41,6 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
-    console.log(product);
     const req = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -50,6 +50,31 @@ export default class App extends React.Component {
       .then(() => this.setState({
         cart: this.state.cart.concat(product)
       }))
+      .catch(err => console.error(err));
+  }
+
+  checkForInsert() {
+    const req = {
+      method: 'GET',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify()
+    };
+    const req2 = {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify()
+    };
+    fetch('/api/orders', req)
+      .then(() => this.setState({
+        insertCompleted: true
+      }))
+      .catch(err => console.error(err, this.setState({
+        insertCompleted: false
+      })));
+    fetch('/api/orders', req2)
+      .then(res => res.json())
       .catch(err => console.error(err));
   }
 
