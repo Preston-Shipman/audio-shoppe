@@ -2,12 +2,14 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import Cart from './cart';
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       message: null,
-      view: { name: 'catalog', params: {} },
+      view: { name: 'cart', params: {} },
       isLoading: true,
       cart: []
     };
@@ -40,7 +42,6 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
-    console.log(product);
     const req = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -61,11 +62,18 @@ export default class App extends React.Component {
           <ProductList setView={this.setView} />
         </div>
       );
-    } else {
+    } else if (this.state.view.name === 'product-details') {
       return (
         <div>
           <Header />,
           <ProductDetails productId={this.state.view.params.productId} setView={this.setView} addToCart={this.addToCart} />
+        </div>
+      );
+    } else if (this.state.view.name === 'cart') {
+      return (
+        <div>
+          <Header setView={this.setView} />
+          <Cart cart={this.state.cart} />
         </div>
       );
     }
