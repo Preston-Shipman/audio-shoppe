@@ -1,17 +1,19 @@
+/* eslint-disable no-console */
 import React from 'react';
-import { response } from 'express';
+import CartItem from './cart-item';
 
 function Cart(props) {
   let cartItems = <h3>You have nothing in your cart.</h3>;
+  console.log(props);
 
   if (props.cart.length) {
-    cartItems = props.cart.map((cartItem, index) => {
+    cartItems = props.cart.map((currentItem, index) => {
       return (
-        <div key={index}>This is a cart item.</div>
+        <CartItem key={index} item={currentItem} />
       );
     });
   } else {
-    response.status(400, 'No items in cart');
+    return cartItems;
   }
 
   return (
@@ -23,9 +25,7 @@ function Cart(props) {
             <h1>My Cart:</h1>
           </div>
           <div className="col-12">
-            <div className="border rounded p-3">
-              {cartItems}
-            </div>
+            <div className="border rounded p-3">{cartItems}</div>
           </div>
         </div>
       </div>

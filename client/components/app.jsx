@@ -9,7 +9,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       message: null,
-      view: { name: 'cart', params: {} },
+      // default catalog
+      view: { name: 'catalog', params: {} },
       isLoading: true,
       cart: []
     };
@@ -38,7 +39,13 @@ export default class App extends React.Component {
 
   getCartItems() {
     fetch('/api/cart')
-      .then(res => res.json());
+      .then(res => res.json())
+      .then(cart => {
+        this.setState({ cart });
+      })
+      .catch(err => {
+        alert('Error', err);
+      });
   }
 
   addToCart(product) {
@@ -58,22 +65,26 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Header cartItemCount={this.state.cart}/>,
+          <Header cartItemCount={this.state.cart} setView={this.setView} />,
           <ProductList setView={this.setView} />
         </div>
       );
-    } else if (this.state.view.name === 'product-details') {
+    } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <Header />,
-          <ProductDetails productId={this.state.view.params.productId} setView={this.setView} addToCart={this.addToCart} />
+          <Header setView={this.setView} />,
+          <ProductDetails
+            productId={this.state.view.params.productId}
+            setView={this.setView}
+            addToCart={this.addToCart}
+          />
         </div>
       );
     } else if (this.state.view.name === 'cart') {
       return (
         <div>
           <Header setView={this.setView} />
-          <Cart cart={this.state.cart} />
+          <Cart cart={this.state.cart} setView={this.setView} getCartItems={this.getCartItems}/>
         </div>
       );
     }
