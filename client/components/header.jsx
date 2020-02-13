@@ -13,8 +13,7 @@ function header(props) {
       </a>
       <i
         className="fas fa-shopping-cart float-right text-white"
-        onClick={() => props.setView('cart', {})}
-      ></i>
+        onClick={() => props.setView('cart', {})} ></i>
     </nav>
   );
 }

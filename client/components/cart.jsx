@@ -27,6 +27,12 @@ function Cart(props) {
           <div className="col-12">
             <div className="border rounded p-3">{cartItems}</div>
           </div>
+          <div
+            className="btn"
+            onClick= {this.setView({ name: 'checkout', params: {} })}
+          >
+            Checkout
+          </div>
         </div>
       </div>
     </div>
