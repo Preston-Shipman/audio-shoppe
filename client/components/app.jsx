@@ -100,7 +100,7 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  placeOrder() {
+  placeOrder(props) {
     const params = {
       name: null,
       creditCard: null,
@@ -156,7 +156,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <Header setView={this.setView} />,
+          <Header setView={this.setView} />
           <CheckoutForm setView={this.setView} />
         </div>
       );
