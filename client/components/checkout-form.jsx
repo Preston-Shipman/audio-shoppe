@@ -16,9 +16,10 @@ class CheckoutForm extends React.Component {
         }
       }
     };
+    this.setView = this.setView.bind(this);
   }
 
-  inputHandler = event => {
+  inputHandler(event) {
     const nameOfTarget = event.target.name;
     const value = event.target.value;
     const creditCardRegEx = /^[0-9]{13,16}$/;
