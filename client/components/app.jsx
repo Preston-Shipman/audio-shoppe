@@ -19,6 +19,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   // still gotta do this instruction Modify CartSummary to include a button that changes the App's view state to { name: 'checkout', params: {} } (if the user has added any items to their cart).
@@ -157,8 +158,12 @@ export default class App extends React.Component {
       return (
         <div>
           <Header setView={this.setView} />
-          <CheckoutForm setView={this.setView} />
+          <CheckoutForm setView={this.setView} placeOrder={this.placeOrder}/>
         </div>
+      );
+    } else {
+      return (
+        <div></div>
       );
     }
   }

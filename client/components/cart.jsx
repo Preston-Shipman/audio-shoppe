@@ -29,10 +29,8 @@ function Cart(props) {
           </div>
           <div
             className="btn"
-            onClick= {props.setView({ name: 'checkout', params: {} })}
-          >
-            Checkout
-          </div>
+            onClick= { () => { props.setView('checkout', {}); }}
+          > Checkout </div>
         </div>
       </div>
     </div>
