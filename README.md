@@ -1,2 +1,6 @@
 # wicked-sales-js
-A full stack Node.js and React shopping cart app.
+E-commerce app writen using:
+-React.js
+-Node.js
+-Express
+-Bootstrap
