@@ -4,12 +4,11 @@ import CartItem from './cart-item';
 
 function Cart(props) {
   let cartItems = <h3>You have nothing in your cart.</h3>;
-  console.log(props);
 
   if (props.cart.length) {
-    cartItems = props.cart.map((currentItem, index) => {
+    cartItems = props.cart.map((currentItem, index, itemPrice) => {
       return (
-        <CartItem key={index} item={currentItem} />
+        <CartItem key={index} item={currentItem} price={itemPrice} />
       );
     });
   } else {
