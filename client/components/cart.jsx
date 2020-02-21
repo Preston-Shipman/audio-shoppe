@@ -4,12 +4,11 @@ import CartItem from './cart-item';
 
 function Cart(props) {
   let cartItems = <h3>You have nothing in your cart.</h3>;
-  console.log(props);
 
   if (props.cart.length) {
-    cartItems = props.cart.map((currentItem, index) => {
+    cartItems = props.cart.map((currentItem, index, itemPrice) => {
       return (
-        <CartItem key={index} item={currentItem} />
+        <CartItem key={index} item={currentItem} price={itemPrice} />
       );
     });
   } else {
@@ -21,16 +20,23 @@ function Cart(props) {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <a href="#">Continue Shopping</a>
+            <a href="#" className="btn btn-primary" role="button" onClick={() => { props.setView('catalog', {}); }}>
+              Continue Shopping
+            </a>
             <h1>My Cart:</h1>
           </div>
           <div className="col-12">
             <div className="border rounded p-3">{cartItems}</div>
           </div>
           <div
-            className="btn"
-            onClick= { () => { props.setView('checkout', {}); }}
-          > Checkout </div>
+            className="btn btn-primary btn-lg btn-block" role="button"
+            onClick={() => {
+              props.setView('checkout', {});
+            }}
+          >
+            {' '}
+            Checkout{' '}
+          </div>
         </div>
       </div>
     </div>

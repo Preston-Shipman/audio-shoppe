@@ -59,6 +59,7 @@ class CheckoutForm extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
+            <h1>My Cart:</h1>
             <form>
               <div className="form-group">
                 <label htmlFor="name"> Name </label>
