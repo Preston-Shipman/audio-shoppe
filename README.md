@@ -15,4 +15,4 @@ E-commerce app
 - User can enter their purchase information
 
 # Example of App
-![Imgur](https://i.imgur.com/OYLZ8EL.png)
+![Imgur](https://i.imgur.com/eVUD9zQ.png)
