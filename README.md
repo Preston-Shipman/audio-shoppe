@@ -1,5 +1,5 @@
 # wicked-sales-js
-E-commerce app
+E-commerce app will be remade into AudioShoppe a speaker store
 
 # Technoligies:
 - React.js
