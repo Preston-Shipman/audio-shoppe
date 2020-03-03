@@ -9,7 +9,7 @@ function header(props) {
         onClick={() => props.setView('catalog', {})}
         href="#"
       >
-        Wicked Sales
+        Audio Shoppe
       </a>
       <i
         className="fas fa-shopping-cart float-right text-white"
