@@ -17,3 +17,22 @@
 .card-img {
   object-fit: contain;
 }
+
+#root {
+  background-color: #6C5F5B;
+}
+html {
+  background-color: #6C5F5B;
+}
+
+.navbar {
+  background-color: #8593AE;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.cart-card {
+  background-color: white;
+}

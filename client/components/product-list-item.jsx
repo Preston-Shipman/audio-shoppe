@@ -6,7 +6,7 @@ function ProductListItem(props) {
   return (
     <div className="col-6 col-md-4 mt-4">
       <div
-        className="card h-100 "
+        className="card h-100 home-card"
         onClick={() =>
           props.setView('details', { productId: product.productId })
         }>

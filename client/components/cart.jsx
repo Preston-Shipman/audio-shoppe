@@ -26,7 +26,7 @@ function Cart(props) {
             <h1>My Cart:</h1>
           </div>
           <div className="col-12">
-            <div className="border rounded p-3">{cartItems}</div>
+            <div className="border rounded p-3 cart-card">{cartItems}</div>
           </div>
           <div
             className="btn btn-primary btn-lg btn-block" role="button"
