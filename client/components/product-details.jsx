@@ -23,10 +23,10 @@ class ProductDetails extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="card h-100">
+              <div className="card h-100 product-details-card">
                 <div
                   onClick={() => this.props.setView('catalog', {})}
-                  className="text-muted">
+                  className="text">
                   <i className="fa fa-angle-left">
                   </i>
                 Back to catalog

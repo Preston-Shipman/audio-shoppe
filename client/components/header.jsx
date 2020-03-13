@@ -1,7 +1,7 @@
 import React from 'react';
 function header(props) {
   return (
-    <nav className="navbar navbar-dark bg-dark">
+    <nav className="navbar">
       <i className="fas fa-dollar-sign float-left text-white"></i>
       <a
         className="navbar-brand"
