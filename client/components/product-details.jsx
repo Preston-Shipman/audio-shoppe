@@ -26,9 +26,10 @@ class ProductDetails extends React.Component {
               <div className="card h-100">
                 <div
                   onClick={() => this.props.setView('catalog', {})}
-                  className="btn btn-secondary h-25 w-25"
-                >
-                  Back to catalog
+                  className="text-muted">
+                  <i className="fa fa-angle-left">
+                  </i>
+                Back to catalog
                 </div>
                 <img
                   src={singleProductDetails.image}

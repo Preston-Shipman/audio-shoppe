@@ -13,3 +13,7 @@
   width: 100%;
   height: 163px;
 }
+
+.card-img {
+  object-fit: contain;
+}

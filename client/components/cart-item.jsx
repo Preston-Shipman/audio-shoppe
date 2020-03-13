@@ -8,7 +8,7 @@ function CartItem(props) {
     <div className="container cartContainer p-2">
       <div className="row no-gutters">
         <div className="col-md-6">
-          <img src={item.image} className="card-img-responsive cartImg" />
+          <img src={item.image} className="card-img cartImg" />
         </div>
         <div className="col-md-6">
           <div className="card mb-100">

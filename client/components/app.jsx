@@ -22,7 +22,6 @@ export default class App extends React.Component {
     this.placeOrder = this.placeOrder.bind(this);
   }
 
-  // still gotta do this instruction Modify CartSummary to include a button that changes the App's view state to { name: 'checkout', params: {} } (if the user has added any items to their cart).
   componentDidMount() {
     fetch('/api/health-check')
       .then(res => res.json())
@@ -128,14 +127,14 @@ export default class App extends React.Component {
           <Header
             cartItemCount={this.state.cart}
             setView={this.setView}
-          />,
+          />
           <ProductList setView={this.setView} />
         </div>
       );
     } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <Header setView={this.setView} />,
+          <Header setView={this.setView} />
           <ProductDetails
             productId={this.state.view.params.productId}
             setView={this.setView}
