@@ -30,9 +30,13 @@ html {
 }
 
 .navbar-brand {
-  color: white;
+  color: white !important;
 }
 
 .cart-card {
   background-color: white;
+}
+
+.my-cart-text {
+  color: white;
 }

@@ -20,16 +20,16 @@ function Cart(props) {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <a href="#" className="btn btn-primary" role="button" onClick={() => { props.setView('catalog', {}); }}>
+            <a href="#" className="btn btn-primary float-right mb-2 mt-2" role="button" onClick={() => { props.setView('catalog', {}); }}>
               Continue Shopping
             </a>
-            <h1>My Cart:</h1>
+            <h1 className="my-cart-text">My Cart:</h1>
           </div>
           <div className="col-12">
             <div className="border rounded p-3 cart-card">{cartItems}</div>
           </div>
           <div
-            className="btn btn-primary btn-lg btn-block" role="button"
+            className="btn btn-primary mt-1 float-right text-justify" role="button"
             onClick={() => {
               props.setView('checkout', {});
             }}
