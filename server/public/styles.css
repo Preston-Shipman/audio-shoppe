@@ -37,6 +37,11 @@ html {
   background-color: white;
 }
 
-.my-cart-text {
+.text-color {
   color: white;
+}
+
+.btn {
+  background-color: #8593AE !important;
+  border-color: #8593AE !important;
 }

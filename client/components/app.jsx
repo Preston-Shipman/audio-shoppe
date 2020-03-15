@@ -120,7 +120,6 @@ export default class App extends React.Component {
       );
   }
 
-  // b59784 bronze
   render() {
     if (this.state.view.name === 'catalog') {
       return (

@@ -3,7 +3,7 @@ import React from 'react';
 import CartItem from './cart-item';
 
 function Cart(props) {
-  let cartItems = <h3>You have nothing in your cart.</h3>;
+  let cartItems = <h3 className="text-color">You have nothing in your cart.</h3>;
 
   if (props.cart.length) {
     cartItems = props.cart.map((currentItem, index, itemPrice) => {
@@ -23,13 +23,13 @@ function Cart(props) {
             <a href="#" className="btn btn-primary float-right mb-2 mt-2" role="button" onClick={() => { props.setView('catalog', {}); }}>
               Continue Shopping
             </a>
-            <h1 className="my-cart-text">My Cart:</h1>
+            <h1 className="text-color">My Cart:</h1>
           </div>
           <div className="col-12">
             <div className="border rounded p-3 cart-card">{cartItems}</div>
           </div>
           <div
-            className="btn btn-primary mt-1 float-right text-justify" role="button"
+            className="btn btn-primary mt-1 btn-block text-justify text-center" role="button"
             onClick={() => {
               props.setView('checkout', {});
             }}
