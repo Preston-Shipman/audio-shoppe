@@ -14,7 +14,7 @@ function CartItem(props) {
           <div className="card mb-100">
             <div className="card-body">
               <h5>{item.name}</h5>
-              <h3>{priceInt}</h3>
+              <h3 className="price">{priceInt}</h3>
               <p className="card-text">{item.shortDescription}</p>
             </div>
           </div>
