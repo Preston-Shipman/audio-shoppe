@@ -52,6 +52,16 @@ class CheckoutForm extends React.Component {
       }
     };
 
+    handleOrder() {
+      event.preventDefault();
+      const customerInfo = {
+        name: this.state.name,
+        creditCard: this.state.creditCard,
+        shippingAddress: this.state.shippingAddress
+      };
+      this.onSubmit(customerInfo)
+    }
+
   }
 
   render() {
@@ -60,7 +70,7 @@ class CheckoutForm extends React.Component {
         <div className="row">
           <div className="col-12">
             <h1 className="text-color">My Cart:</h1>
-            <form>
+            <form onSubmit={this.props.placeOrder}>
               <div className="form-group">
                 <label htmlFor="name" className="text-color"> Name </label>
                 <input

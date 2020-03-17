@@ -106,7 +106,13 @@ export default class App extends React.Component {
       creditCard: null,
       shippingAddress: null
     };
-    fetch('/api/orders', params)
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(props)
+    })
       .then(res => res.json())
       .then(() =>
         this.setState({
