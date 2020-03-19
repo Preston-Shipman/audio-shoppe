@@ -17,6 +17,8 @@ class CheckoutForm extends React.Component {
       }
     };
     this.inputHandler = this.inputHandler.bind(this);
+    this.handleOrder = this.handleOrder.bind(this);
+    const { handleOrder } = this.props;
   }
 
   inputHandler(event) {
@@ -51,17 +53,15 @@ class CheckoutForm extends React.Component {
         console.log('Nothing');
       }
     };
-
-    handleOrder() {
-      event.preventDefault();
-      const customerInfo = {
-        name: this.state.name,
-        creditCard: this.state.creditCard,
-        shippingAddress: this.state.shippingAddress
-      };
-      this.onSubmit(customerInfo)
-    }
-
+  }
+  handleOrder(props) {
+    event.preventDefault();
+    const customerInfo = {
+      name: this.state.name,
+      creditCard: this.state.creditCard,
+      shippingAddress: this.state.shippingAddress
+    };
+    this.onSubmit(customerInfo)
   }
 
   render() {
@@ -70,7 +70,7 @@ class CheckoutForm extends React.Component {
         <div className="row">
           <div className="col-12">
             <h1 className="text-color">My Cart:</h1>
-            <form onSubmit={this.props.placeOrder}>
+            <form onSubmit={(this.handleOrder)}>
               <div className="form-group">
                 <label htmlFor="name" className="text-color"> Name </label>
                 <input
@@ -97,7 +97,7 @@ class CheckoutForm extends React.Component {
                 <label htmlFor="shippingInfo" className="text-color"> Shipping Address </label>
                 <input
                   className="form-control"
-                  id="sBlurippingInfo"
+                  id="shippingInfo"
                   type="text"
                   name="shippingAddress"
                   value={this.state.form.shippingAddress.value}

@@ -100,18 +100,18 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  placeOrder(props) {
-    const params = {
-      name: null,
-      creditCard: null,
-      shippingAddress: null
-    };
+  placeOrder(customerInfo) {
+    // const params = {
+    //   name: null,
+    //   creditCard: null,
+    //   shippingAddress: null
+    // };
     fetch('/api/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(props)
+      body: JSON.stringify(customerInfo)
     })
       .then(res => res.json())
       .then(() =>
@@ -123,7 +123,10 @@ export default class App extends React.Component {
         this.setState({
           view: { name: 'catalog', params: {} }
         })
-      );
+      )
+      .catch(err => {
+        console.error('Place Order Err', err);
+      });
   }
 
   render() {
