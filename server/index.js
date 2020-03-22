@@ -145,7 +145,7 @@ app.post('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/orders', (req, res, next) => {
-  if (!req.body.cartId) {
+  if (!req.session.cartId) {
     next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 400));
   } else {
     if (req.body.name && req.body.creditCard && req.body.shippingAddress) {
@@ -153,14 +153,19 @@ app.post('/api/orders', (req, res, next) => {
                     values($1, $2, $3, $4)
                     returning *`;
       const params = [
-        req.body.cartId,
+        req.session.cartId,
         req.body.name,
         req.body.creditCard,
         req.body.shippingAddress
       ];
       db.query(sql, params)
-        .then(result => res.status(201).json(result.rows))
-        .catch(err => next(err));
+        .then(result => {
+          const customerResult = result.rows[0];
+          delete req.session.cartId;
+          delete customerResult.cartId;
+          res.status(201).json(customerResult);
+        })
+        .catch(err => { next(err); });
     }
   }
 });
@@ -168,7 +173,7 @@ app.post('/api/orders', (req, res, next) => {
 app.delete('api/orders', (req, res, next) => {
   const deleteCartId = 'delete "cartId" from req.session where "cartId"=$1';
   const params = [
-    req.body.cartId
+    req.session.cartId
   ];
   db.query(deleteCartId, params)
     .then(result => res.status(200).json(result.rows))

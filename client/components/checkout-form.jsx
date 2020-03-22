@@ -18,7 +18,6 @@ class CheckoutForm extends React.Component {
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.handleOrder = this.handleOrder.bind(this);
-    const { handleOrder } = this.props;
   }
 
   inputHandler(event) {
@@ -54,14 +53,15 @@ class CheckoutForm extends React.Component {
       }
     };
   }
-  handleOrder(props) {
+
+  handleOrder(event) {
     event.preventDefault();
     const customerInfo = {
-      name: this.state.name,
-      creditCard: this.state.creditCard,
-      shippingAddress: this.state.shippingAddress
+      name: this.state.form.customerName.value,
+      creditCard: this.state.form.creditCard.value,
+      shippingAddress: this.state.form.shippingAddress.value
     };
-    this.onSubmit(customerInfo)
+    this.props.placeOrder(customerInfo);
   }
 
   render() {

@@ -3,7 +3,7 @@ import React from 'react';
 import CartItem from './cart-item';
 
 function Cart(props) {
-  let cartItems = <h3 className="text-color">You have nothing in your cart.</h3>;
+  let cartItems = <h3 className="text-color text-center">You have nothing in your cart.</h3>;
 
   if (props.cart.length) {
     cartItems = props.cart.map((currentItem, index, itemPrice) => {

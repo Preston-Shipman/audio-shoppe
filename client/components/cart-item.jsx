@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 import React from 'react';
 
 function CartItem(props) {

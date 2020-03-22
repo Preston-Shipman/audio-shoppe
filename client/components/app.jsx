@@ -10,7 +10,6 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       message: null,
-      // default catalog
       view: { name: 'catalog', params: {} },
       isLoading: true,
       cart: [],
@@ -101,11 +100,6 @@ export default class App extends React.Component {
   }
 
   placeOrder(customerInfo) {
-    // const params = {
-    //   name: null,
-    //   creditCard: null,
-    //   shippingAddress: null
-    // };
     fetch('/api/orders', {
       method: 'POST',
       headers: {
