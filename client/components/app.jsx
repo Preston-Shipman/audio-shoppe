@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import Cart from './cart';
 import CheckoutForm from './checkout-form';
+import Modal from './modal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,12 +14,14 @@ export default class App extends React.Component {
       view: { name: 'catalog', params: {} },
       isLoading: true,
       cart: [],
-      insertCompleted: null
+      insertCompleted: null,
+      modalView: true
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.setModalView = this.setModalView.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +33,7 @@ export default class App extends React.Component {
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
     this.getCartItems();
+    this.setModalView();
   }
 
   setView(name, params) {
@@ -38,6 +42,11 @@ export default class App extends React.Component {
         name: name,
         params: params
       }
+    });
+  }
+  setModalView() {
+    this.setState({
+      modalView:false
     });
   }
 
@@ -131,7 +140,10 @@ export default class App extends React.Component {
             cartItemCount={this.state.cart}
             setView={this.setView}
           />
-          <ProductList setView={this.setView} />
+          <ProductList setView={this.setView}
+            setModalView={this.setModalView}
+            modal={this.state.modal}
+          />
         </div>
       );
     } else if (this.state.view.name === 'details') {
