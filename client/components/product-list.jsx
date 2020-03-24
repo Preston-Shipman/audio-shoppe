@@ -44,7 +44,7 @@ class ProductList extends React.Component {
         <div className={'row'}>
           {productMap}
           <Modal setModalView={this.props.setModalView}
-            />
+          />
         </div>
       </div>
     );
