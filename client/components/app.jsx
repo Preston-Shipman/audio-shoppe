@@ -44,9 +44,10 @@ export default class App extends React.Component {
       }
     });
   }
+
   setModalView() {
     this.setState({
-      modalView:false
+      modalView: false
     });
   }
 
