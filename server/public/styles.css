@@ -49,3 +49,12 @@ html {
 .modal {
   display:block;
 }
+
+.modal-header {
+  color: white;
+  background-color: #8593AE !important;
+}
+
+.modal-footer {
+  background-color: #6C5F5B !important;
+}

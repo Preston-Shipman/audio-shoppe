@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import Cart from './cart';
 import CheckoutForm from './checkout-form';
 import Modal from './modal';
+import { Provider } from "./context";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,13 +16,14 @@ export default class App extends React.Component {
       isLoading: true,
       cart: [],
       insertCompleted: null,
-      modalView: true
+      modalView: true,
+      modalButtonClicked: false
+
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
-    this.setModalView = this.setModalView.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +35,14 @@ export default class App extends React.Component {
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
     this.getCartItems();
-    this.setModalView();
+    // this.setModalView();
+  }
+
+  clickedModalButton() {
+    this.setState({
+      modalView: !this.state.modalView,
+      modalButtonClicked : !this.state.modalButtonClicked
+    })
   }
 
   setView(name, params) {
@@ -42,12 +51,6 @@ export default class App extends React.Component {
         name: name,
         params: params
       }
-    });
-  }
-
-  setModalView() {
-    this.setState({
-      modalView: false
     });
   }
 
@@ -136,16 +139,25 @@ export default class App extends React.Component {
   render() {
     if (this.state.view.name === 'catalog') {
       return (
-        <div>
-          <Header
-            cartItemCount={this.state.cart}
-            setView={this.setView}
-          />
-          <ProductList setView={this.setView}
-            setModalView={this.setModalView}
-            modal={this.state.modal}
-          />
-        </div>
+        <React.Fragment>
+          <Provider value={{
+            clickedModalButton: e => this.clickedModalButton(e)
+          }
+          }>
+            <ProductList />>
+        </Provider>
+          <div>
+            <Header
+              cartItemCount={this.state.cart}
+              setView={this.setView}
+            />
+            <ProductList setView={this.setView}
+            // setModalView={this.setModalView}
+            // modal={this.state.modal}
+            />
+          </div>
+        </React.Fragment>
+
       );
     } else if (this.state.view.name === 'details') {
       return (
