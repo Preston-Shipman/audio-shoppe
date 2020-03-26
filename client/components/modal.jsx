@@ -7,19 +7,22 @@ class Modal extends React.Component {
       buttonClicked: false
     };
     this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.changeModalVisibility = this.changeModalVisibility.bind(this);
   }
 
   handleButtonClick() {
     this.setState({
       buttonClicked: true
-    })
-      if (this.state.buttonClicked) {
-        this.props.setModalView();
-        return;
-      }
+    });
   }
 
-  modalVisible(){
+  changeModalVisibility() {
+    if (this.state.buttonClicked) {
+      this.props.setModalView();
+    }
+  }
+
+  modalVisible() {
     return this.props.modalView ? '' : 'hidden';
   }
 
@@ -44,7 +47,10 @@ class Modal extends React.Component {
                     </ul>
                   </div>
                   <div className="modal-footer">
-                    <button data-dismiss="modal" onClick={() => this.handleButtonClick()} className="btn btn-primary d-block m-auto">I Understand</button>
+                    <button data-dismiss="modal" onClick={async () => {
+                      await this.handleButtonClick();
+                      await this.changeModalVisibility();
+                    }} className="btn btn-primary d-block m-auto">I Understand</button>
                   </div>
                 </div>
               </div>
