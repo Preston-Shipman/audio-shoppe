@@ -47,7 +47,7 @@ class Modal extends React.Component {
                     </ul>
                   </div>
                   <div className="modal-footer">
-                    <button data-dismiss="modal" onClick={async () => {
+                    <button type="button" onClick={async () => {
                       await this.handleButtonClick();
                       await this.changeModalVisibility();
                     }} className="btn btn-primary d-block m-auto">I Understand</button>

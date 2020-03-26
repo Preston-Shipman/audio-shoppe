@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
-import Modal from './modal';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -44,10 +43,6 @@ class ProductList extends React.Component {
       <div className={'container'}>
         <div className={'row'}>
           {productMap}
-          <Modal
-            setModalView={this.props.setModalView}
-            modalView={this.props.modalView}
-          />
         </div>
       </div>
     );
