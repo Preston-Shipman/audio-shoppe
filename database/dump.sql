@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
--- Dumped by pg_dump version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
+-- Dumped from database version 10.12 (Ubuntu 10.12-0ubuntu0.18.04.1)
+-- Dumped by pg_dump version 10.12 (Ubuntu 10.12-0ubuntu0.18.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -229,9 +229,45 @@ ALTER TABLE ONLY public.products ALTER COLUMN "productId" SET DEFAULT nextval('p
 --
 
 COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
-1	38	5	9900
-2	38	2	2595
-7	39	2	2595
+8	40	1	400000
+9	41	4	229998
+10	42	1	400000
+11	43	1	400000
+12	43	1	400000
+13	43	1	400000
+14	43	1	400000
+15	43	4	229998
+16	43	7	74998
+17	43	4	229998
+18	44	1	400000
+19	45	1	400000
+20	46	1	400000
+21	47	4	229998
+22	47	4	229998
+23	48	1	400000
+24	48	1	400000
+25	48	1	400000
+26	48	1	400000
+27	48	4	229998
+28	48	1	400000
+29	48	1	400000
+30	48	1	400000
+31	48	1	400000
+32	48	1	400000
+33	49	1	400000
+34	50	1	400000
+35	51	1	400000
+36	51	1	400000
+37	51	1	400000
+38	51	1	400000
+39	52	1	400000
+40	53	1	400000
+41	54	4	229998
+42	54	1	400000
+43	55	4	229998
+44	55	4	229998
+45	55	4	229998
+46	55	4	229998
 \.
 
 
@@ -240,45 +276,22 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 --
 
 COPY public.carts ("cartId", "createdAt") FROM stdin;
-1	2020-01-16 14:45:01.303922-08
-2	2020-01-16 14:45:01.32901-08
-3	2020-01-16 14:45:37.804669-08
-4	2020-01-16 14:45:37.818903-08
-5	2020-01-16 14:47:04.162505-08
-6	2020-01-16 14:52:32.102256-08
-7	2020-01-16 15:07:31.485324-08
-8	2020-01-16 15:07:52.951691-08
-9	2020-01-16 15:08:47.605861-08
-10	2020-01-16 15:10:05.07452-08
-11	2020-01-16 15:36:11.022269-08
-12	2020-01-16 15:38:14.062312-08
-13	2020-01-16 15:39:29.150872-08
-14	2020-01-16 15:41:19.349521-08
-15	2020-01-16 16:11:09.352484-08
-16	2020-01-16 16:34:14.977494-08
-17	2020-01-16 16:35:26.949118-08
-18	2020-01-16 16:38:20.391441-08
-19	2020-01-16 16:38:58.289832-08
-20	2020-01-16 16:40:05.211907-08
-21	2020-01-16 16:43:57.561283-08
-22	2020-01-16 16:49:38.786881-08
-23	2020-01-16 16:50:47.962562-08
-24	2020-01-16 16:52:08.351987-08
-25	2020-01-16 16:52:42.906853-08
-26	2020-01-16 16:54:10.944513-08
-27	2020-01-16 16:56:43.876685-08
-28	2020-01-16 17:08:27.465665-08
-29	2020-01-16 17:09:10.342571-08
-30	2020-01-16 17:09:55.090914-08
-31	2020-01-16 17:17:21.574637-08
-32	2020-01-16 17:18:07.973447-08
-33	2020-01-16 17:18:29.882202-08
-34	2020-01-16 17:18:56.748264-08
-35	2020-01-16 17:30:30.033435-08
-36	2020-01-16 17:36:06.855559-08
-37	2020-01-16 17:37:23.55483-08
-38	2020-01-16 17:37:33.533565-08
-39	2020-02-07 16:55:54.891949-08
+40	2020-03-13 02:10:43.461702+00
+41	2020-03-13 23:20:47.697155+00
+42	2020-03-15 03:51:22.211124+00
+43	2020-03-15 19:27:36.156483+00
+44	2020-03-17 21:23:53.724291+00
+45	2020-03-17 21:45:21.308936+00
+46	2020-03-18 21:38:09.286239+00
+47	2020-03-20 01:50:36.855228+00
+48	2020-03-22 02:46:00.984956+00
+49	2020-03-22 03:47:54.825846+00
+50	2020-03-22 03:51:48.219498+00
+51	2020-03-22 03:53:53.418481+00
+52	2020-03-22 04:16:29.139717+00
+53	2020-03-22 04:25:21.307472+00
+54	2020-03-24 06:25:33.913446+00
+55	2020-03-24 21:55:56.147438+00
 \.
 
 
@@ -287,6 +300,8 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 --
 
 COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", "createdAt") FROM stdin;
+1	45	Preston	11111111111111	5515 Dan Gogh Way	2020-03-17 21:53:08.277891+00
+7	53	Jimbo Daniels	45784678457667	5515 Dan Dogh Way	2020-03-22 04:25:42.572446+00
 \.
 
 
@@ -295,12 +310,12 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-1	Shake Weight	2999	/images/shake-weight.jpg	Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-2	ShamWow	2595	/images/shamwow.jpg	It's like a chamois, towel, and sponge, all in one! Soaks up to 10x it's weight in any liquid!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-3	Snuggie	2900	/images/snuggie.jpg	Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-4	Wax Vac	999	/images/wax-vac.jpg	Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-5	Ostrich Pillow	9900	/images/ostrich-pillow.jpg	Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-6	Tater Mitts	830	/images/tater-mitts.jpg	8 Seconds is all you need with Tater Mitts. Quickly and easily prepare all your favorite potato dishes with Tater Mitts.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
+1	Bowers & Wilkins Formation Duo	400000	/images/bowersWilkins.jpg	Experience high-fidelity wireless audio with this Bowers and Wilkins Formation Duo wireless speaker system.	The 1-inch carbon dome tweeters and 6.5-inch continuum cone woofers deliver high-fidelity audio across a frequency response range of 25Hz to 33kHz. Featuring advanced wireless technology, this Bowers and Wilkins Formation Duo wireless speaker system provides a high-resolution streaming experience with the audio quality of a wired system
+4	ELAC Navis	229998	/images/elac.jpg	Enjoy high-end audio performance with this gloss white ELAC Navis powered bookshelf speaker.	Separate tweeter, midrange and subwoofer drivers accurately play a full range of sounds from bright highs to rumbling lows. All-analog signal processing ensures this ELAC Navis powered bookshelf speaker faithfully reproduces inputs from turntables and other nondigital sources.
+5	Defenitive Technology Demand D11	113998	/images/defTech.jpg	Hear every note of your favorite songs from these Definitive Technology Demand bookshelf speakers.	The sleek design fits in easily with your sound setup, and the natural bead-blasted aluminum front baffle exudes a classic look in speakers. Three-dimensional sound imaging on these Definitive Technology Demand bookshelf speakers delivers impressive sound reproduction.
+6	KEF Reference Series	399998	/images/kef.jpg	Experience expansive audio with these KEF REFERENCE 1 speakers.	The compact bookshelf size lets you set hi-fi components up in any space, and the 125mm Uni-Q driver array delivers full-range sound when coupled with the built-in 6.5-inch bass driver. Install these KEF REFERENCE 1 speakers in a two-channel setup, or integrate them as rear channels in your home theater.
+7	Klipsch Reference Premiere	74998	/images/klipsch.jpg	Enjoy your favorite music with this Klipsch Reference Premiere speakers.	Their vented tweeter design provides enhanced detail and clarity for vocals, and the 6.5-inch Cerametallic cone woofer creates punchy low frequencies with minimal distortion. These Klipsch Reference Premiere speakers have a compressed molded silicon face for a smooth frequency response and natural-sounding audio.
+8	Martin Logan Motion	69998	/images/martinLogan.jpg	Fill your room with high-quality audio with this red walnut MartinLogan Motion Series bookshelf speaker.	The stiffened suspension and dust cap design improve the acoustic performance, while the Folded Motion XT tweeter adds detail to your music. This MartinLogan Motion Series bookshelf speaker has a 6.5-inch aluminum cone woofer to deliver thumping bass.
 \.
 
 
@@ -308,28 +323,28 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 7, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 46, true);
 
 
 --
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 39, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 55, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 1, false);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 7, true);
 
 
 --
 -- Name: products_productId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."products_productId_seq"', 1, false);
+SELECT pg_catalog.setval('public."products_productId_seq"', 8, true);
 
 
 --
