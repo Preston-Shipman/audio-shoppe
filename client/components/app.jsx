@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import Cart from './cart';
 import CheckoutForm from './checkout-form';
+import Modal from './modal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,12 +14,14 @@ export default class App extends React.Component {
       view: { name: 'catalog', params: {} },
       isLoading: true,
       cart: [],
-      insertCompleted: null
+      insertCompleted: null,
+      modalView: true
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.setModalView = this.setModalView.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +41,12 @@ export default class App extends React.Component {
         name: name,
         params: params
       }
+    });
+  }
+
+  setModalView() {
+    this.setState({
+      modalView: false
     });
   }
 
@@ -124,20 +133,36 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (this.state.view.name === 'catalog') {
+    if (this.state.view.name === 'catalog' && this.state.modalView === true) {
       return (
         <div>
           <Header
             cartItemCount={this.state.cart}
             setView={this.setView}
           />
-          <ProductList setView={this.setView} />
+          <ProductList setView={this.setView}
+          />
+          <Modal
+            setModalView={this.setModalView}
+            modalView={this.state.modalView}
+          />
+        </div>
+      );
+    } else if (this.state.view.name === 'catalog' && this.state.modalView === false) {
+      return (
+        <div>
+          <Header
+            cartItemCount={this.state.cart}
+            setView={this.setView}
+          />
+          <ProductList setView={this.setView}
+          />
         </div>
       );
     } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <Header setView={this.setView} />
+          <Header view={this.setView} />
           <ProductDetails
             productId={this.state.view.params.productId}
             setView={this.setView}
@@ -160,7 +185,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header setView={this.setView} />
-          <CheckoutForm setView={this.setView} placeOrder={this.placeOrder}/>
+          <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} />
         </div>
       );
     } else {
