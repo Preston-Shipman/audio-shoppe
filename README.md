@@ -15,4 +15,4 @@
 - User can enter their purchase information
 
 # Example of App
-![Imgur](https://i.imgur.com/eVUD9zQ.png)
+![Imgur](https://i.imgur.com/GnrT4vx.png)
