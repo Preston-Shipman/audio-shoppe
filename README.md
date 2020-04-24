@@ -1,5 +1,5 @@
 # Audo-Shoppe
-- An Ecommerce app for audiophiles who love speakers.
+- An E-commerce app for audiophiles who love speakers.
 
 # Technoligies:
 - React.js
