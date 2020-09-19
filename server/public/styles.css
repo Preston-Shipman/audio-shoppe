@@ -66,3 +66,23 @@ html {
 #detailsCard {
   margin-top: 15px;
 }
+
+#back-to-catalog {
+  cursor: pointer;
+}
+
+#add-to-cart-btn {
+  cursor: pointer;
+}
+
+.home-card {
+  cursor: pointer;
+}
+
+#cart-icon {
+  cursor: pointer;
+}
+
+#checkout-btn {
+  cursor: pointer;
+}
