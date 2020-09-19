@@ -4,7 +4,7 @@ function ProductListItem(props) {
   const product = props.product;
   const priceInt = '$' + parseInt(product.price / 100).toFixed(2);
   return (
-    <div className="col-6 col-md-4 mt-4">
+    <div className="col-12 col-md-6 col-lg-4 mt-4">
       <div
         className="card h-100 home-card"
         onClick={() =>

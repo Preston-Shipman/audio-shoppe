@@ -41,7 +41,7 @@ class ProductList extends React.Component {
     ));
     return (
       <div className={'container'}>
-        <div className={'row'}>
+        <div className={'row'} id="front">
           {productMap}
         </div>
       </div>

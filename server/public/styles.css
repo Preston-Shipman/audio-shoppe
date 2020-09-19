@@ -58,3 +58,11 @@ html {
 .modal-footer {
   background-color: #6C5F5B !important;
 }
+
+#front {
+  margin-bottom: 15px;
+}
+
+#detailsCard {
+  margin-top: 15px;
+}

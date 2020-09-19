@@ -22,7 +22,7 @@ class ProductDetails extends React.Component {
       const priceInt = '$' + parseInt(singleProductDetails.price / 100).toFixed(2);
       return (
         <div className="container">
-          <div className="row">
+          <div className="row" id="detailsCard">
             <div className="col-12">
               <div className="card h-100 product-details-card">
                 <div
