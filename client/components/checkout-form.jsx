@@ -72,7 +72,7 @@ class CheckoutForm extends React.Component {
             <h1 className="text-black">My Cart:</h1>
             <form onSubmit={(this.handleOrder)}>
               <div className="form-group">
-                <label htmlFor="name" className="text-black"> Name </label>
+                <label htmlFor="name" className="text-dark"> Name </label>
                 <input
                   className="form-control"
                   id="name"
@@ -83,7 +83,7 @@ class CheckoutForm extends React.Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="cc" className="text-black"> Credit Card </label>
+                <label htmlFor="cc" className="text-dark"> Credit Card </label>
                 <input
                   className="form-control"
                   id="cc"
@@ -94,7 +94,7 @@ class CheckoutForm extends React.Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="shippingInfo" className="text-black"> Shipping Address </label>
+                <label htmlFor="shippingInfo" className="text-dark"> Shipping Address </label>
                 <input
                   className="form-control"
                   id="shippingInfo"

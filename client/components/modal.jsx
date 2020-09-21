@@ -32,11 +32,11 @@ class Modal extends React.Component {
       <div className={`${modalView} container`}>
         <div className={'row'}>
           <div>
-            <div className="modal fade show" id="exampleModal" tabIndex="-1" role="dialog" >
+            <div className="modal fade show" tabIndex="-1" role="dialog" >
               <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                   <div className="modal-header ">
-                    <h5 className="modal-title m-auto" id="exampleModalLabel">Disclaimer</h5>
+                    <h5 className="modal-title m-auto">Disclaimer</h5>
                   </div>
                   <div className="modal-body">
                     <ul>
