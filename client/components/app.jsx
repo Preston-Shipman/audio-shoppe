@@ -162,7 +162,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <Header view={this.setView} />
+          <Header setView={this.setView} />
           <ProductDetails
             productId={this.state.view.params.productId}
             setView={this.setView}

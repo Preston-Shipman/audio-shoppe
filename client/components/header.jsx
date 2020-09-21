@@ -1,12 +1,12 @@
 import React from 'react';
 
-function header(props) {
+function Header(props) {
   return (
     <nav className="navbar">
       <i className="fas fa-music float-left text-white"></i>
       <a
         className="navbar-brand"
-        onClick={() => props.setView('catalog', {})}
+        onClick={() => { props.setView('catalog', {}); }}
         href="#"
       >
         Audio Shoppe
@@ -19,4 +19,4 @@ function header(props) {
   );
 }
 
-export default header;
+export default Header;
