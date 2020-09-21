@@ -29,6 +29,7 @@ function Cart(props) {
           </div>
           <div
             className="btn btn-primary mt-1 btn-block text-justify text-center" role="button"
+            id="checkout-btn"
             onClick={() => {
               props.setView('checkout', {});
             }}

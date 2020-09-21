@@ -27,7 +27,7 @@ class ProductDetails extends React.Component {
               <div className="card h-100 product-details-card">
                 <div
                   onClick={() => this.props.setView('catalog', {})}
-                  className="text-muted">
+                  className="text-muted" id="back-to-catalog">
                   <i className="fa fa-angle-left">
                   </i>
                 Back to catalog
@@ -47,7 +47,7 @@ class ProductDetails extends React.Component {
                   </p>
                   <div
                     onClick={() => this.props.addToCart(this.state.product)}
-                    className="btn btn-primary float-right"
+                    className="btn btn-primary float-right" id="add-to-cart-btn"
                   >
                     Add to cart
                   </div>
