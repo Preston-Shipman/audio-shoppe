@@ -19,18 +19,20 @@
 }
 
 #root {
-  background-color: #6C5F5B;
+  background-color: #C0C0C0;
 }
 html {
-  background-color: #6C5F5B;
+  background-color: #C0C0C0;
 }
 
 .navbar {
-  background-color: #8593AE;
+  background-color: white;
 }
 
 .navbar-brand {
-  color: white !important;
+  font-family: 'Bebas Neue', cursive;
+  font-size: xx-large;
+  color: black !important;
 }
 
 .cart-card {
@@ -42,8 +44,8 @@ html {
 }
 
 .btn {
-  background-color: #8593AE !important;
-  border-color: #8593AE !important;
+  background-color: black !important;
+  border-color: black !important;
 }
 
 .modal {
@@ -51,12 +53,12 @@ html {
 }
 
 .modal-header {
-  color: white;
-  background-color: #8593AE !important;
+  color: black;
+  background-color: white !important;
 }
 
 .modal-footer {
-  background-color: #6C5F5B !important;
+  background-color: white !important;
 }
 
 #front {
@@ -69,6 +71,7 @@ html {
 
 #back-to-catalog {
   cursor: pointer;
+  color: black;
 }
 
 #add-to-cart-btn {
