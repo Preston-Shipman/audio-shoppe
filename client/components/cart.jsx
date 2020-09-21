@@ -22,7 +22,7 @@ function Cart(props) {
             <a href="#" className="btn btn-primary float-right mb-2 mt-2" role="button" onClick={() => { props.setView('catalog', {}); }}>
               Continue Shopping
             </a>
-            <h1 className="text-dark">My Cart:</h1>
+            <h1>My Cart:</h1>
           </div>
           <div className="col-12">
             <div className="border rounded p-3 cart-card">{cartItems}</div>

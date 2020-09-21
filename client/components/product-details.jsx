@@ -27,7 +27,7 @@ class ProductDetails extends React.Component {
               <div className="card h-100 product-details-card">
                 <div
                   onClick={() => this.props.setView('catalog', {})}
-                  className="text-black" id="back-to-catalog">
+                  id="back-to-catalog">
                   <i className="fa fa-angle-left">
                   </i>
                 Back to catalog

@@ -3,7 +3,7 @@ import React from 'react';
 function Header(props) {
   return (
     <nav className="navbar">
-      <i className="fas fa-music float-left text-dark"></i>
+      <i className="fas fa-music float-left"></i>
       <a
         className="navbar-brand"
         onClick={() => { props.setView('catalog', {}); }}
@@ -12,7 +12,7 @@ function Header(props) {
         Audio Shoppe
       </a>
       <i
-        className="fas fa-shopping-cart float-right text-dark"
+        className="fas fa-shopping-cart float-right"
         id="cart-icon"
         onClick={() => props.setView('cart', {})} ></i>
     </nav>
