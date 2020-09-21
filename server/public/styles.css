@@ -31,8 +31,11 @@ html {
 
 .navbar-brand {
   font-family: 'Bebas Neue';
+  font-weight: bold;
   font-size: xx-large;
   color: black !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .cart-card {
