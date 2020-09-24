@@ -75,6 +75,7 @@ html {
 #back-to-catalog {
   cursor: pointer;
   color: black;
+  margin-left: 2px  ;
 }
 
 #add-to-cart-btn {
@@ -92,13 +93,11 @@ html {
 
 #cart-icon {
   cursor: pointer;
-  color: black;
-  /* -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black; */
+  color: black !important;
 }
 
 #music-icon {
-  color: black;
+  color: black !important;
 }
 
 #checkout-btn {
@@ -106,5 +105,5 @@ html {
 }
 
 .text-black {
-  color: black;
+  color: black !important;
 }
