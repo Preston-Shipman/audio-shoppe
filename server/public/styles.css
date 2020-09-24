@@ -30,12 +30,7 @@ html {
 }
 
 .navbar-brand {
-  /* font-family: 'Bebas Neue';
-  font-weight: bold; */
-  /* font-size: xx-large; */
   color: black !important;
-  /* -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility; */
 }
 
 .cart-card {
@@ -75,7 +70,7 @@ html {
 #back-to-catalog {
   cursor: pointer;
   color: black;
-  margin-left: 2px  ;
+  margin-left: 10px;
 }
 
 #add-to-cart-btn {
@@ -106,4 +101,9 @@ html {
 
 .text-black {
   color: black !important;
+}
+
+span {
+  color: red;
+  visibility: hidden;
 }

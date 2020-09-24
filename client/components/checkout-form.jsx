@@ -43,9 +43,9 @@ class CheckoutForm extends React.Component {
           isValid = true;
         }
         if (isValid === true) {
-          alert('Thank You');
+          document.getElementById('ccSpan').style.visibility = 'hidden';
         } else {
-          alert('Please provide a valid credit card number');
+          document.getElementById('ccSpan').style.visibility = 'visible';
         }
       } else {
         // eslint-disable-next-line no-console
@@ -92,6 +92,7 @@ class CheckoutForm extends React.Component {
                   value={this.state.form.creditCard.value}
                   onChange={this.inputHandler}
                 />
+                <span id="ccSpan">Please input a valid 16 digit credit card number</span>
               </div>
               <div className="form-group">
                 <label htmlFor="shippingInfo" className="text-black"> Shipping Address </label>
