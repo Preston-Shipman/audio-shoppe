@@ -3,7 +3,9 @@ import React from 'react';
 function Header(props) {
   return (
     <nav className="navbar">
-      <i className="fas fa-music float-left"></i>
+      <i className="fas fa-music float-left"
+        id="music-icon"
+      ></i>
       <a
         className="navbar-brand"
         onClick={() => { props.setView('catalog', {}); }}

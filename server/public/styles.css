@@ -92,8 +92,19 @@ html {
 
 #cart-icon {
   cursor: pointer;
+  color: black;
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black; */
+}
+
+#music-icon {
+  color: black;
 }
 
 #checkout-btn {
   cursor: pointer;
+}
+
+.text-black {
+  color: black;
 }
