@@ -15,7 +15,8 @@ export default class App extends React.Component {
       isLoading: true,
       cart: [],
       insertCompleted: null,
-      modalView: true
+      modalView: true,
+      cartQuantity: 0
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
@@ -69,8 +70,11 @@ export default class App extends React.Component {
     };
     fetch('api/cart', req)
       .then(() =>
-        this.setState({
-          cart: this.state.cart.concat(product)
+        this.setState(prevState => {
+          return {
+            cart: this.state.cart.concat(product),
+            cartQuantity: prevState.cartQuantity + 1
+          };
         })
       )
       .catch(err => console.error(err));
@@ -139,6 +143,7 @@ export default class App extends React.Component {
           <Header
             cartItemCount={this.state.cart}
             setView={this.setView}
+            cartQuantity={this.state.cartQuantity}
           />
           <ProductList setView={this.setView}
           />
@@ -154,6 +159,7 @@ export default class App extends React.Component {
           <Header
             cartItemCount={this.state.cart}
             setView={this.setView}
+            cartQuantity={this.state.cartQuantity}
           />
           <ProductList setView={this.setView}
           />
@@ -162,7 +168,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <Header setView={this.setView} />
+          <Header setView={this.setView} cartQuantity={this.state.cartQuantity}/>
           <ProductDetails
             productId={this.state.view.params.productId}
             setView={this.setView}
@@ -173,7 +179,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       return (
         <div>
-          <Header setView={this.setView} />
+          <Header setView={this.setView} cartQuantity={this.state.cartQuantity}/>
           <Cart
             cart={this.state.cart}
             setView={this.setView}
@@ -184,7 +190,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <Header setView={this.setView} />
+          <Header setView={this.setView} cartQuantity={this.state.cartQuantity} />
           <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} />
         </div>
       );

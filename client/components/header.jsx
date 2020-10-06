@@ -13,10 +13,9 @@ function Header(props) {
       >
         Audio Shoppe
       </a>
-      <i
-        className="fas fa-shopping-cart float-right"
-        id="cart-icon"
-        onClick={() => props.setView('cart', {})} ></i>
+      <button type="button" className="cart-btn" onClick={() => props.setView('cart', {})}>
+        <h5 className="m-0"> <i className="fas fa-shopping-cart"></i> {props.cartQuantity} </h5>
+      </button>
     </nav>
   );
 }
