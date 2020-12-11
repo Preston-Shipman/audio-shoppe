@@ -16,47 +16,15 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.products DROP CONSTRAINT products_pkey;
-ALTER TABLE ONLY public.orders DROP CONSTRAINT orders_pkey;
-ALTER TABLE ONLY public.carts DROP CONSTRAINT carts_pkey;
-ALTER TABLE ONLY public."cartItems" DROP CONSTRAINT "cartItems_pkey";
-ALTER TABLE public.products ALTER COLUMN "productId" DROP DEFAULT;
-ALTER TABLE public.orders ALTER COLUMN "orderId" DROP DEFAULT;
-ALTER TABLE public.carts ALTER COLUMN "cartId" DROP DEFAULT;
-ALTER TABLE public."cartItems" ALTER COLUMN "cartItemId" DROP DEFAULT;
-DROP SEQUENCE public."products_productId_seq";
-DROP TABLE public.products;
-DROP SEQUENCE public."orders_orderId_seq";
-DROP TABLE public.orders;
-DROP SEQUENCE public."carts_cartId_seq";
-DROP TABLE public.carts;
-DROP SEQUENCE public."cartItems_cartItemId_seq";
-DROP TABLE public."cartItems";
-DROP EXTENSION plpgsql;
-DROP SCHEMA public;
 --
--- Name: public; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA public;
-
-
---
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON SCHEMA public IS 'standard public schema';
-
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -67,7 +35,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: cartItems; Type: TABLE; Schema: public; Owner: -
+-- Name: cartItems; Type: TABLE; Schema: public; Owner: dev
 --
 
 CREATE TABLE public."cartItems" (
@@ -78,8 +46,10 @@ CREATE TABLE public."cartItems" (
 );
 
 
+ALTER TABLE public."cartItems" OWNER TO dev;
+
 --
--- Name: cartItems_cartItemId_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: cartItems_cartItemId_seq; Type: SEQUENCE; Schema: public; Owner: dev
 --
 
 CREATE SEQUENCE public."cartItems_cartItemId_seq"
@@ -91,15 +61,17 @@ CREATE SEQUENCE public."cartItems_cartItemId_seq"
     CACHE 1;
 
 
+ALTER TABLE public."cartItems_cartItemId_seq" OWNER TO dev;
+
 --
--- Name: cartItems_cartItemId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: cartItems_cartItemId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dev
 --
 
 ALTER SEQUENCE public."cartItems_cartItemId_seq" OWNED BY public."cartItems"."cartItemId";
 
 
 --
--- Name: carts; Type: TABLE; Schema: public; Owner: -
+-- Name: carts; Type: TABLE; Schema: public; Owner: dev
 --
 
 CREATE TABLE public.carts (
@@ -108,8 +80,10 @@ CREATE TABLE public.carts (
 );
 
 
+ALTER TABLE public.carts OWNER TO dev;
+
 --
--- Name: carts_cartId_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: carts_cartId_seq; Type: SEQUENCE; Schema: public; Owner: dev
 --
 
 CREATE SEQUENCE public."carts_cartId_seq"
@@ -121,15 +95,17 @@ CREATE SEQUENCE public."carts_cartId_seq"
     CACHE 1;
 
 
+ALTER TABLE public."carts_cartId_seq" OWNER TO dev;
+
 --
--- Name: carts_cartId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: carts_cartId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dev
 --
 
 ALTER SEQUENCE public."carts_cartId_seq" OWNED BY public.carts."cartId";
 
 
 --
--- Name: orders; Type: TABLE; Schema: public; Owner: -
+-- Name: orders; Type: TABLE; Schema: public; Owner: dev
 --
 
 CREATE TABLE public.orders (
@@ -142,8 +118,10 @@ CREATE TABLE public.orders (
 );
 
 
+ALTER TABLE public.orders OWNER TO dev;
+
 --
--- Name: orders_orderId_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: orders_orderId_seq; Type: SEQUENCE; Schema: public; Owner: dev
 --
 
 CREATE SEQUENCE public."orders_orderId_seq"
@@ -155,15 +133,17 @@ CREATE SEQUENCE public."orders_orderId_seq"
     CACHE 1;
 
 
+ALTER TABLE public."orders_orderId_seq" OWNER TO dev;
+
 --
--- Name: orders_orderId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: orders_orderId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dev
 --
 
 ALTER SEQUENCE public."orders_orderId_seq" OWNED BY public.orders."orderId";
 
 
 --
--- Name: products; Type: TABLE; Schema: public; Owner: -
+-- Name: products; Type: TABLE; Schema: public; Owner: dev
 --
 
 CREATE TABLE public.products (
@@ -176,8 +156,10 @@ CREATE TABLE public.products (
 );
 
 
+ALTER TABLE public.products OWNER TO dev;
+
 --
--- Name: products_productId_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: products_productId_seq; Type: SEQUENCE; Schema: public; Owner: dev
 --
 
 CREATE SEQUENCE public."products_productId_seq"
@@ -189,43 +171,45 @@ CREATE SEQUENCE public."products_productId_seq"
     CACHE 1;
 
 
+ALTER TABLE public."products_productId_seq" OWNER TO dev;
+
 --
--- Name: products_productId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: products_productId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dev
 --
 
 ALTER SEQUENCE public."products_productId_seq" OWNED BY public.products."productId";
 
 
 --
--- Name: cartItems cartItemId; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cartItems cartItemId; Type: DEFAULT; Schema: public; Owner: dev
 --
 
 ALTER TABLE ONLY public."cartItems" ALTER COLUMN "cartItemId" SET DEFAULT nextval('public."cartItems_cartItemId_seq"'::regclass);
 
 
 --
--- Name: carts cartId; Type: DEFAULT; Schema: public; Owner: -
+-- Name: carts cartId; Type: DEFAULT; Schema: public; Owner: dev
 --
 
 ALTER TABLE ONLY public.carts ALTER COLUMN "cartId" SET DEFAULT nextval('public."carts_cartId_seq"'::regclass);
 
 
 --
--- Name: orders orderId; Type: DEFAULT; Schema: public; Owner: -
+-- Name: orders orderId; Type: DEFAULT; Schema: public; Owner: dev
 --
 
 ALTER TABLE ONLY public.orders ALTER COLUMN "orderId" SET DEFAULT nextval('public."orders_orderId_seq"'::regclass);
 
 
 --
--- Name: products productId; Type: DEFAULT; Schema: public; Owner: -
+-- Name: products productId; Type: DEFAULT; Schema: public; Owner: dev
 --
 
 ALTER TABLE ONLY public.products ALTER COLUMN "productId" SET DEFAULT nextval('public."products_productId_seq"'::regclass);
 
 
 --
--- Data for Name: cartItems; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: cartItems; Type: TABLE DATA; Schema: public; Owner: dev
 --
 
 COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
@@ -272,7 +256,7 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 
 
 --
--- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: dev
 --
 
 COPY public.carts ("cartId", "createdAt") FROM stdin;
@@ -296,7 +280,7 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 
 
 --
--- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: dev
 --
 
 COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", "createdAt") FROM stdin;
@@ -306,49 +290,49 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 
 
 --
--- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: dev
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
 1	Bowers & Wilkins Formation Duo	400000	/images/bowersWilkins.jpg	Experience high-fidelity wireless audio with this Bowers and Wilkins Formation Duo wireless speaker system.	The 1-inch carbon dome tweeters and 6.5-inch continuum cone woofers deliver high-fidelity audio across a frequency response range of 25Hz to 33kHz. Featuring advanced wireless technology, this Bowers and Wilkins Formation Duo wireless speaker system provides a high-resolution streaming experience with the audio quality of a wired system
 4	ELAC Navis	229998	/images/elac.jpg	Enjoy high-end audio performance with this gloss white ELAC Navis powered bookshelf speaker.	Separate tweeter, midrange and subwoofer drivers accurately play a full range of sounds from bright highs to rumbling lows. All-analog signal processing ensures this ELAC Navis powered bookshelf speaker faithfully reproduces inputs from turntables and other nondigital sources.
-5	Defenitive Technology Demand D11	113998	/images/defTech.jpg	Hear every note of your favorite songs from these Definitive Technology Demand bookshelf speakers.	The sleek design fits in easily with your sound setup, and the natural bead-blasted aluminum front baffle exudes a classic look in speakers. Three-dimensional sound imaging on these Definitive Technology Demand bookshelf speakers delivers impressive sound reproduction.
 6	KEF Reference Series	399998	/images/kef.jpg	Experience expansive audio with these KEF REFERENCE 1 speakers.	The compact bookshelf size lets you set hi-fi components up in any space, and the 125mm Uni-Q driver array delivers full-range sound when coupled with the built-in 6.5-inch bass driver. Install these KEF REFERENCE 1 speakers in a two-channel setup, or integrate them as rear channels in your home theater.
 7	Klipsch Reference Premiere	74998	/images/klipsch.jpg	Enjoy your favorite music with this Klipsch Reference Premiere speakers.	Their vented tweeter design provides enhanced detail and clarity for vocals, and the 6.5-inch Cerametallic cone woofer creates punchy low frequencies with minimal distortion. These Klipsch Reference Premiere speakers have a compressed molded silicon face for a smooth frequency response and natural-sounding audio.
 8	Martin Logan Motion	69998	/images/martinLogan.jpg	Fill your room with high-quality audio with this red walnut MartinLogan Motion Series bookshelf speaker.	The stiffened suspension and dust cap design improve the acoustic performance, while the Folded Motion XT tweeter adds detail to your music. This MartinLogan Motion Series bookshelf speaker has a 6.5-inch aluminum cone woofer to deliver thumping bass.
+5	Definitive Technology Demand D11	113998	/images/defTech.jpg	Hear every note of your favorite songs from these Definitive Technology Demand bookshelf speakers.	The sleek design fits in easily with your sound setup, and the natural bead-blasted aluminum front baffle exudes a classic look in speakers. Three-dimensional sound imaging on these Definitive Technology Demand bookshelf speakers delivers impressive sound reproduction.
 \.
 
 
 --
--- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: dev
 --
 
 SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 46, true);
 
 
 --
--- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: dev
 --
 
 SELECT pg_catalog.setval('public."carts_cartId_seq"', 55, true);
 
 
 --
--- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: dev
 --
 
 SELECT pg_catalog.setval('public."orders_orderId_seq"', 7, true);
 
 
 --
--- Name: products_productId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: products_productId_seq; Type: SEQUENCE SET; Schema: public; Owner: dev
 --
 
 SELECT pg_catalog.setval('public."products_productId_seq"', 8, true);
 
 
 --
--- Name: cartItems cartItems_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cartItems cartItems_pkey; Type: CONSTRAINT; Schema: public; Owner: dev
 --
 
 ALTER TABLE ONLY public."cartItems"
@@ -356,7 +340,7 @@ ALTER TABLE ONLY public."cartItems"
 
 
 --
--- Name: carts carts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: carts carts_pkey; Type: CONSTRAINT; Schema: public; Owner: dev
 --
 
 ALTER TABLE ONLY public.carts
@@ -364,7 +348,7 @@ ALTER TABLE ONLY public.carts
 
 
 --
--- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: dev
 --
 
 ALTER TABLE ONLY public.orders
@@ -372,7 +356,7 @@ ALTER TABLE ONLY public.orders
 
 
 --
--- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: dev
 --
 
 ALTER TABLE ONLY public.products
@@ -380,7 +364,7 @@ ALTER TABLE ONLY public.products
 
 
 --
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: -
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: dev
 --
 
 GRANT ALL ON SCHEMA public TO PUBLIC;
