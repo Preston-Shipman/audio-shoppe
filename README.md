@@ -1,7 +1,7 @@
 # Audo-Shoppe
 - An E-commerce app for audiophiles who love speakers.
 
-# Technologies
+# Technologies:
 - React.js
 - Node.js
 - Express
