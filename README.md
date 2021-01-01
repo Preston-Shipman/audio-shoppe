@@ -1,4 +1,4 @@
-# Audo-Shoppe
+# Audo-Shopp
 - An E-commerce app for audiophiles who love speakers.
 
 # Technologies:
