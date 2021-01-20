@@ -15,7 +15,7 @@
 - User can enter their purchase information
 
 # Example of App
-
+![](audio-shoppe.gif)
 
 # Live link
 - https://audio-shoppe.prestonshipman.com/
